@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finest Properties Mallorca | Luxusimmobilien & Investment</title>
+    <meta name="description" content="Ihr Experte für Luxusimmobilien, Fincas und Investments auf Mallorca. AI-Ready Real Estate für den Südwesten und Palma.">
+    
+    <!-- Tailwind CSS (via CDN für Prototyping - in Produktion später purgen) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts: Inter (Apple-like clean) & Playfair Display (Luxury Serif) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <!-- AI & SEO: Strukturierte Daten (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "RealEstateAgent",
+      "name": "Finest Properties Mallorca",
+      "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80",
+      "description": "Exklusive Luxusimmobilien und Investment-Objekte auf Mallorca. Spezialisiert auf den Südwesten und historische Fincas.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Carrer de la Mar",
+        "addressLocality": "Palma",
+        "addressRegion": "Illes Balears",
+        "postalCode": "07001",
+        "addressCountry": "ES"
+      },
+      "priceRange": "€€€€",
+      "areaServed": ["Mallorca", "Port d'Andratx", "Son Vida", "Santa Ponsa"],
+      "knowsAbout": ["Luxusvillen", "ROI Investments", "Golden Visa", "Ferienlizenzen"]
+    }
+    </script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+        
+        /* Custom Apple-like Blur */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Hide scrollbar for gallery but keep functionality */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Map Interaction Styles */
+        .map-region {
+            fill: #E5E7EB; /* Gray-200 standard */
+            stroke: #fff;
+            stroke-width: 2;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .map-region:hover {
+            fill: #EA580C; /* Orange-600 hover */
+            transform: translateY(-2px);
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased">
+
+    <!-- Cookie Consent Mockup (Borlabs Platzhalter) -->
+    <div id="cookie-banner" class="fixed bottom-4 left-4 right-4 md:left-8 md:w-96 bg-white shadow-2xl p-6 rounded-2xl z-50 border border-gray-100 transform transition-all duration-500 translate-y-0">
+        <h3 class="text-sm font-semibold mb-2">Datenschutz & Transparenz</h3>
+        <p class="text-xs text-gray-500 mb-4">Wir nutzen Cookies, um Ihr Erlebnis zu personalisieren und Marktdaten zu analysieren (AI-Optimierung). </p>
+        <div class="flex gap-2">
+            <button onclick="document.getElementById('cookie-banner').style.transform='translateY(150%)'" class="flex-1 bg-gray-900 text-white text-xs py-2 rounded-lg hover:bg-gray-800 transition">Akzeptieren</button>
+            <button onclick="document.getElementById('cookie-banner').style.transform='translateY(150%)'" class="flex-1 bg-gray-100 text-gray-600 text-xs py-2 rounded-lg hover:bg-gray-200 transition">Nur Essenzielle</button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-40 transition-all duration-300" id="navbar">
+        <div class="glass-panel w-full">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <!-- Logo -->
+                    <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer">
+                        <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white font-serif italic">F</div>
+                        <span class="font-serif text-xl tracking-wide text-gray-900">Finest Properties Mallorca</span>
+                    </div>
+                    
+                    <!-- Desktop Menu -->
+                    <div class="hidden md:flex space-x-8 items-center">
+                        <a href="#" class="text-sm font-medium text-gray-600 hover:text-orange-600 transition">Luxury Villas</a>
+                        <a href="#" class="text-sm font-medium text-gray-600 hover:text-orange-600 transition">Investments</a>
+                        <a href="#" class="text-sm font-medium text-gray-600 hover:text-orange-600 transition">Lifestyle</a>
+                        <a href="#" class="text-sm font-medium text-gray-600 hover:text-orange-600 transition">Investor Hub</a>
+                        <a href="#" class="bg-gray-900 text-white px-5 py-2 rounded-full text-sm hover:bg-orange-600 transition duration-300">Kontakt</a>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <div class="md:hidden flex items-center">
+                        <button id="mobile-menu-btn" class="text-gray-600 hover:text-gray-900 focus:outline-none">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-orange-600 hover:bg-gray-50">Luxury Villas</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-orange-600 hover:bg-gray-50">Investments</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-orange-600 hover:bg-gray-50">Investor Hub</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-orange-600 hover:bg-gray-50">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image (Mallorca Sunset Vibe) -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1536761448655-9a6d00120537?auto=format&fit=crop&q=80" alt="Mallorca Küste Sonnenuntergang" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto mt-[-50px]">
+            <span class="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-md text-white text-xs tracking-widest uppercase mb-4 border border-white/30">Since 2000 • The New Standard</span>
+            <h1 class="text-5xl md:text-7xl text-white font-serif leading-tight mb-6 drop-shadow-lg">
+                Mallorca <br/><span class="text-orange-400">für Investoren & HNWI</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 mb-10 font-light max-w-2xl mx-auto drop-shadow-md">
+                Trophy Assets, Off-Market Deals & High-ROI Portfolios. <br>
+                Wir verbinden Lifestyle mit nachhaltiger Rendite.
+            </p>
+
+            <!-- SLIM PROPERTY FINDER (Above the Fold) -->
+            <div class="glass-panel rounded-full p-2 max-w-4xl mx-auto shadow-2xl flex flex-col md:flex-row items-center gap-2 animate-fade-in-up">
+                
+                <!-- Region Select -->
+                <div class="relative w-full md:w-1/4 group">
+                    <select class="w-full bg-transparent p-3 pl-6 text-gray-800 outline-none appearance-none cursor-pointer text-sm font-medium">
+                        <option>Alle Regionen</option>
+                        <option>Südwesten (Port d'Andratx)</option>
+                        <option>Palma & Son Vida</option>
+                        <option>Inselmitte (Agroturismo)</option>
+                    </select>
+                    <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none text-gray-400">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                </div>
+
+                <div class="hidden md:block w-px h-8 bg-gray-300"></div>
+
+                <!-- Type Select -->
+                <div class="relative w-full md:w-1/4">
+                    <select class="w-full bg-transparent p-3 pl-4 text-gray-800 outline-none appearance-none cursor-pointer text-sm font-medium">
+                        <option>Alle Immobilientypen</option>
+                        <option>Luxusvilla</option>
+                        <option>Finca / Landhaus</option>
+                        <option>Investment / Hotel</option>
+                        <option>Grundstück</option>
+                    </select>
+                    <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none text-gray-400">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                </div>
+
+                <div class="hidden md:block w-px h-8 bg-gray-300"></div>
+
+                <!-- Budget Select -->
+                <div class="relative w-full md:w-1/4">
+                     <select class="w-full bg-transparent p-3 pl-4 text-gray-800 outline-none appearance-none cursor-pointer text-sm font-medium">
+                        <option>Preis beliebig</option>
+                        <option>> 2 Mio €</option>
+                        <option>> 5 Mio €</option>
+                        <option>> 10 Mio € (Trophy Assets)</option>
+                    </select>
+                    <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none text-gray-400">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                </div>
+
+                <!-- Search Button -->
+                <button class="w-full md:w-auto bg-gray-900 hover:bg-orange-600 text-white rounded-full px-8 py-3 transition-all duration-300 shadow-lg flex items-center justify-center gap-2">
+                    <span>Suchen</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION 1: Interactive Map & Market Data -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <!-- Text Content -->
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-serif text-gray-900 mb-6">Investieren mit Weitblick.<br>Datengetrieben.</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Mallorca ist mehr als ein Lifestyle-Ziel. Es ist ein "Safe Haven" für europäisches Kapital. 
+                        Mit strengen Bauauflagen und einer Nachfrage, die das Angebot dauerhaft übersteigt, bieten wir Ihnen Zugang zu einem der stabilsten Immobilienmärkte der Welt.
+                    </p>
+                    
+                    <!-- Dynamic Data Points -->
+                    <div class="grid grid-cols-2 gap-6">
+                         <div class="bg-orange-50 p-6 rounded-2xl border border-orange-100">
+                            <span class="block text-4xl font-bold text-orange-600 mb-1" id="dynamic-growth">+8-10%</span>
+                            <span class="text-sm text-gray-600 font-medium" id="dynamic-region">Südwesten (Fokus)</span>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                            <span class="block text-4xl font-bold text-gray-900 mb-1">Safe Haven</span>
+                            <span class="text-sm text-gray-500 font-medium">EU-Rechtssicherheit</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="inline-flex items-center mt-8 text-orange-600 font-medium hover:text-orange-700">
+                        Investment Report 2025 herunterladen
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+                
+                <!-- Interactive SVG Map -->
+                <div class="relative w-full aspect-[4/3] bg-gray-50 rounded-3xl p-8 flex items-center justify-center select-none shadow-inner group">
+                    <svg viewBox="0 0 800 600" class="w-full h-full drop-shadow-xl" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Stylized Mallorca Shape -->
+                        <defs>
+                            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="5" result="blur"/>
+                                <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                            </filter>
+                        </defs>
+                        
+                        <!-- Tramuntana (North West) -->
+                        <path d="M150,300 L200,150 L400,100 L450,120 L300,350 Z" 
+                              class="map-region" data-region="Serra de Tramuntana" data-growth="+6% p.a." 
+                              onclick="updateMapInfo('Serra de Tramuntana', '+6% p.a.')"
+                              onmouseover="updateMapInfo('Serra de Tramuntana', '+6% p.a.')"/>
+                        
+                        <!-- North -->
+                        <path d="M400,100 L450,120 L550,80 L600,150 L500,200 L450,120 Z" 
+                              class="map-region" data-region="Norden (Alcudia/Pollensa)" data-growth="+5% p.a."
+                              onclick="updateMapInfo('Norden', '+5% p.a.')"
+                              onmouseover="updateMapInfo('Norden', '+5% p.a.')"/>
+                        
+                        <!-- East -->
+                        <path d="M600,150 L680,250 L650,400 L550,350 L500,200 Z" 
+                              class="map-region" data-region="Osten (Manacor/Artà)" data-growth="+5-6% p.a."
+                              onclick="updateMapInfo('Osten', '+5-6% p.a.')"
+                              onmouseover="updateMapInfo('Osten', '+5-6% p.a.')"/>
+                              
+                        <!-- South -->
+                        <path d="M650,400 L550,350 L400,450 L450,550 L600,500 Z" 
+                              class="map-region" data-region="Süden (Santanyi/Es Trenc)" data-growth="+7% p.a."
+                              onclick="updateMapInfo('Süden', '+7% p.a.')"
+                              onmouseover="updateMapInfo('Süden', '+7% p.a.')"/>
+                              
+                        <!-- Center -->
+                        <path d="M300,350 L450,120 L500,200 L550,350 L400,450 L300,350 Z" 
+                              class="map-region" data-region="Inselmitte (Agroturismo)" data-growth="+6% p.a."
+                              onclick="updateMapInfo('Inselmitte', '+6% p.a.')"
+                              onmouseover="updateMapInfo('Inselmitte', '+6% p.a.')"/>
+                        
+                        <!-- Palma (South Central) -->
+                        <path d="M250,400 L300,350 L400,450 L350,500 Z" 
+                              class="map-region" data-region="Palma & Son Vida" data-growth="+8% p.a."
+                              onclick="updateMapInfo('Palma & Son Vida', '+8% p.a.')"
+                              onmouseover="updateMapInfo('Palma & Son Vida', '+8% p.a.')"/>
+                              
+                        <!-- Southwest -->
+                        <path d="M100,450 L150,300 L300,350 L250,400 L180,500 Z" 
+                              class="map-region" data-region="Südwesten (Andratx)" data-growth="+9-12% p.a."
+                              onclick="updateMapInfo('Südwesten', '+9-12% p.a.')"
+                              onmouseover="updateMapInfo('Südwesten', '+9-12% p.a.')"/>
+                    </svg>
+                    
+                    <div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur px-4 py-2 rounded-lg text-xs text-gray-500 shadow-sm border border-gray-100">
+                        Interaktive Karte: Mouseover für Details
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: Featured Investments (Cards) -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl font-serif text-gray-900">Aktuelle Opportunities</h2>
+                    <p class="text-gray-500 mt-2">Kuratierte Auswahl aus unserem Portfolio.</p>
+                </div>
+                <a href="#" class="hidden md:block text-sm font-medium text-gray-900 hover:text-orange-600">Alle Listings ansehen →</a>
+            </div>
+
+            <!-- Horizontal Scroll Container for Mobile -->
+            <div class="flex overflow-x-auto gap-6 pb-8 hide-scrollbar snap-x snap-mandatory">
+                
+                <!-- Card 1: From PDF (Agroturismo) -->
+                <div class="min-w-[85vw] md:min-w-[350px] bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden snap-center flex flex-col">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-gray-900">23 Mio €</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="mb-auto">
+                            <span class="text-orange-500 text-xs font-bold tracking-wide uppercase">Agroturismo / Trophy Asset</span>
+                            <h3 class="text-xl font-serif text-gray-900 mt-2 mb-2">Historische Residenz 17. Jh.</h3>
+                            <p class="text-gray-500 text-sm line-clamp-2">Zwischen Palma & Valldemossa. 300 Hektar Land, 84 Schlafzimmer, eigene Wasserquelle.</p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center">
+                            <div class="text-xs text-gray-400">ID: 81400</div>
+                            <button class="text-sm font-medium text-gray-900 hover:text-orange-600">Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: From PDF (Herrenhaus) -->
+                <div class="min-w-[85vw] md:min-w-[350px] bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden snap-center flex flex-col">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1600596542815-2a429b08e6c9?auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-gray-900">24.5 Mio €</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="mb-auto">
+                            <span class="text-orange-500 text-xs font-bold tracking-wide uppercase">Herrenhaus / Palma</span>
+                            <h3 class="text-xl font-serif text-gray-900 mt-2 mb-2">Luxus-Herrenhaus Südlage</h3>
+                            <p class="text-gray-500 text-sm line-clamp-2">320.000 m² Grundstück, 12 Schlafzimmer, Tennisplatz, Teehaus.</p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center">
+                            <div class="text-xs text-gray-400">ID: 81733</div>
+                            <button class="text-sm font-medium text-gray-900 hover:text-orange-600">Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: From PDF (Finca) -->
+                <div class="min-w-[85vw] md:min-w-[350px] bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden snap-center flex flex-col">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-gray-900">6.6 Mio €</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="mb-auto">
+                            <span class="text-orange-500 text-xs font-bold tracking-wide uppercase">Finca / Tramuntana</span>
+                            <h3 class="text-xl font-serif text-gray-900 mt-2 mb-2">Panorama-Blick Finca</h3>
+                            <p class="text-gray-500 text-sm line-clamp-2">400 m² Wohnfläche, Privacy, Poolbereich mit Sauna.</p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center">
+                            <div class="text-xs text-gray-400">ID: 81868</div>
+                            <button class="text-sm font-medium text-gray-900 hover:text-orange-600">Details</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Grounding FAQs (AI Optimization) -->
+    <!-- Semantische Fragen/Antworten helfen Gemini & Co, diese Inhalte als Snippets zu nutzen -->
+    <section class="py-20 bg-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-serif text-center mb-12">Häufige Fragen von Investoren</h2>
+            
+            <div class="space-y-4">
+                <details class="group bg-gray-50 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex cursor-pointer items-center justify-between gap-1.5 text-gray-900 font-medium">
+                        <h3 class="text-lg">Ist Mallorca eine sichere Region für Immobilieninvestments?</h3>
+                        <span class="shrink-0 rounded-full bg-white p-1.5 text-gray-900 sm:p-3 shadow-sm group-open:-rotate-180 transition">
+                            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </span>
+                    </summary>
+                    <div class="mt-4 text-gray-600 leading-relaxed text-sm">
+                        Ja. Spanien und speziell Mallorca gelten als "Safe Haven" für Real Assets innerhalb der EU. Vergleichbar mit der Schweiz oder der Côte d'Azur bietet die Insel politische Stabilität, Rechtssicherheit beim Kauf durch EU-Normen und eine konstant hohe Nachfrage, die den Werterhalt sichert.
+                    </div>
+                </details>
+
+                <details class="group bg-gray-50 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex cursor-pointer items-center justify-between gap-1.5 text-gray-900 font-medium">
+                        <h3 class="text-lg">Wie hoch ist der ROI bei Luxusvillen auf Mallorca?</h3>
+                        <span class="shrink-0 rounded-full bg-white p-1.5 text-gray-900 sm:p-3 shadow-sm group-open:-rotate-180 transition">
+                            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </span>
+                    </summary>
+                    <div class="mt-4 text-gray-600 leading-relaxed text-sm">
+                        Bei Luxusvillen in Top-Lagen (z.B. Son Vida, Südwesten) können Investoren mit einem operativen Cashflow von ca. 1-2% p.a. rechnen, ergänzt durch eine historische Wertsteigerung (Appreciation) von 5-7% jährlich. Bei Objekten mit Ferienvermietungslizenz sind EBITDA-Margen bis zu 25% möglich.
+                    </div>
+                </details>
+
+                <details class="group bg-gray-50 rounded-xl p-6 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex cursor-pointer items-center justify-between gap-1.5 text-gray-900 font-medium">
+                        <h3 class="text-lg">Was bedeutet "Finca Agroturismo" als Investment?</h3>
+                        <span class="shrink-0 rounded-full bg-white p-1.5 text-gray-900 sm:p-3 shadow-sm group-open:-rotate-180 transition">
+                            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </span>
+                    </summary>
+                    <div class="mt-4 text-gray-600 leading-relaxed text-sm">
+                        Agroturismo-Objekte verbinden Landwirtschaft (z.B. Oliven, Wein) mit Hospitality. Aufgrund der steigenden Nachfrage nach nachhaltigen Retreats liegen die Renditen hier oft zwischen 4-6% p.a.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white font-serif italic">F</div>
+                        <span class="font-serif text-xl tracking-wide">Finest Properties Mallorca</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Wir begleiten Sie beim Kauf von Premium-Immobilien auf Mallorca. Von der Besichtigung bis zum Notartermin – und darüber hinaus.
+                    </p>
+                </div>
+
+                <!-- Links 1 -->
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-6">Immobilien</h4>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li><a href="#" class="hover:text-orange-500 transition">Luxusvillen kaufen</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Fincas im Südwesten</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Neubauprojekte</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Off-Market</a></li>
+                    </ul>
+                </div>
+
+                <!-- Links 2 -->
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-6">Investment</h4>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li><a href="#" class="hover:text-orange-500 transition">Marktbericht 2025</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Ferienvermietungslizenz</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Steuern & Recht</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Golden Visa Spanien</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-gray-500 mb-6">Kontakt</h4>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li>Carrer de la Mar, Palma</li>
+                        <li>+34 971 000 000</li>
+                        <li>hello@finestproperties.com</li>
+                    </ul>
+                    <div class="flex gap-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white transition">Instagram</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+                <p>&copy; 2025 Finest Properties Mallorca. All rights reserved.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white">Impressum</a>
+                    <a href="#" class="hover:text-white">Datenschutz</a>
+                    <a href="#" class="hover:text-white">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple JS for Mobile Menu & Scroll Effect -->
+    <script>
+        // Toggle Mobile Menu
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Navbar blur effect on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-md');
+            } else {
+                nav.classList.remove('shadow-md');
+            }
+        });
+
+         // Map Interaction Logic
+        function updateMapInfo(region, growth) {
+            document.getElementById('dynamic-region').innerText = region;
+            document.getElementById('dynamic-growth').innerText = growth;
+        }
+    </script>
+</body>
+</html>
