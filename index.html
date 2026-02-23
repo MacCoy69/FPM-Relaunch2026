@@ -224,8 +224,8 @@
                         </div>
                     </div>
                     
-                    <a href="#" class="inline-flex items-center mt-8 text-orange-600 font-medium hover:text-orange-700">
-                        Investment Report 2025 herunterladen
+                    <a href="#investment-report" class="inline-flex items-center mt-8 text-orange-600 font-medium hover:text-orange-700">
+                        Mallorca Investment Report 2026 anfordern
                         <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                     </a>
                 </div>
@@ -409,6 +409,68 @@
                         Agroturismo-Objekte verbinden Landwirtschaft (z.B. Oliven, Wein) mit Hospitality. Aufgrund der steigenden Nachfrage nach nachhaltigen Retreats liegen die Renditen hier oft zwischen 4-6% p.a.
                     </div>
                 </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Lead-Gen / Investment Report -->
+    <section id="investment-report" class="py-20 bg-gray-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-gray-100">
+                <div class="text-center mb-10">
+                    <span class="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-600 text-xs font-bold tracking-widest uppercase mb-4">Exklusiv</span>
+                    <h2 class="text-3xl md:text-4xl font-serif text-gray-900 mb-4">Mallorca Investment Report 2026</h2>
+                    <p class="text-gray-500 leading-relaxed">Erhalten Sie unseren aktuellen Marktbericht mit detaillierten Wachstumsprognosen, ROI-Analysen und Off-Market-Opportunities – kostenlos und unverbindlich.</p>
+                </div>
+
+                <form class="space-y-5">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div>
+                            <label for="lead-vorname" class="block text-sm font-medium text-gray-700 mb-1">Vorname</label>
+                            <input type="text" id="lead-vorname" name="vorname" placeholder="Max" required
+                                   class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition">
+                        </div>
+                        <div>
+                            <label for="lead-nachname" class="block text-sm font-medium text-gray-700 mb-1">Nachname</label>
+                            <input type="text" id="lead-nachname" name="nachname" placeholder="Mustermann" required
+                                   class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="lead-email" class="block text-sm font-medium text-gray-700 mb-1">E-Mail-Adresse</label>
+                        <input type="email" id="lead-email" name="email" placeholder="max@beispiel.de" required
+                               class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition">
+                    </div>
+
+                    <div>
+                        <label for="lead-interesse" class="block text-sm font-medium text-gray-700 mb-1">Investmentfokus</label>
+                        <select id="lead-interesse" name="interesse"
+                                class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition appearance-none">
+                            <option value="">Bitte wählen...</option>
+                            <option value="luxusvilla">Luxusvilla (Eigennutzung)</option>
+                            <option value="rendite">Rendite-Objekt (Vermietung)</option>
+                            <option value="agroturismo">Agroturismo / Hospitality</option>
+                            <option value="portfolio">Portfolio-Aufbau</option>
+                            <option value="sonstiges">Sonstiges</option>
+                        </select>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <input type="checkbox" id="lead-datenschutz" name="datenschutz" required
+                               class="mt-1 h-4 w-4 rounded border-gray-300 text-orange-600 focus:ring-orange-500">
+                        <label for="lead-datenschutz" class="text-xs text-gray-500 leading-relaxed">
+                            Ich stimme der Verarbeitung meiner Daten gemäß der <a href="#" class="text-orange-600 underline hover:text-orange-700">Datenschutzerklärung</a> zu. Der Report wird per E-Mail zugestellt.
+                        </label>
+                    </div>
+
+                    <button type="submit"
+                            class="w-full bg-gray-900 hover:bg-orange-600 text-white rounded-full py-4 text-sm font-medium transition-all duration-300 shadow-lg">
+                        Report kostenlos anfordern
+                    </button>
+                </form>
+
+                <p class="text-center text-xs text-gray-400 mt-6">Kein Spam. Ihre Daten werden vertraulich behandelt.</p>
             </div>
         </div>
     </section>
