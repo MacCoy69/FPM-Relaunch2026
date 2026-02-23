@@ -303,19 +303,20 @@
                 <a href="#" class="hidden md:block text-sm font-medium text-gray-900 hover:text-orange-600">Alle Listings ansehen →</a>
             </div>
 
-            <!-- Horizontal Scroll Container for Mobile -->
-            <div class="flex overflow-x-auto gap-6 pb-8 hide-scrollbar snap-x snap-mandatory">
-                
-                <!-- Card 1: From PDF (Agroturismo) -->
-                <div class="min-w-[85vw] md:min-w-[350px] bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden snap-center flex flex-col">
+            <!-- Reihe 1: Häuser & Villen -->
+            <h3 class="text-xl font-serif text-gray-900 mb-6">Häuser & Villen</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+
+                <!-- Card 1: Agroturismo -->
+                <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden flex flex-col">
                     <div class="relative h-64">
-                        <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&q=80" alt="Historische Residenz Mallorca" class="w-full h-full object-cover">
                         <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-gray-900">23 Mio €</div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="mb-auto">
                             <span class="text-orange-500 text-xs font-bold tracking-wide uppercase">Agroturismo / Trophy Asset</span>
-                            <h3 class="text-xl font-serif text-gray-900 mt-2 mb-2">Historische Residenz 17. Jh.</h3>
+                            <h4 class="text-xl font-serif text-gray-900 mt-2 mb-2">Historische Residenz 17. Jh.</h4>
                             <p class="text-gray-500 text-sm line-clamp-2">Zwischen Palma & Valldemossa. 300 Hektar Land, 84 Schlafzimmer, eigene Wasserquelle.</p>
                         </div>
                         <div class="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center">
@@ -325,16 +326,16 @@
                     </div>
                 </div>
 
-                <!-- Card 2: From PDF (Herrenhaus) -->
-                <div class="min-w-[85vw] md:min-w-[350px] bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden snap-center flex flex-col">
+                <!-- Card 2: Herrenhaus -->
+                <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden flex flex-col">
                     <div class="relative h-64">
-                        <img src="https://images.unsplash.com/photo-1600596542815-2a429b08e6c9?auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1600596542815-2a429b08e6c9?auto=format&fit=crop&q=80" alt="Luxus-Herrenhaus Palma" class="w-full h-full object-cover">
                         <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-gray-900">24.5 Mio €</div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="mb-auto">
                             <span class="text-orange-500 text-xs font-bold tracking-wide uppercase">Herrenhaus / Palma</span>
-                            <h3 class="text-xl font-serif text-gray-900 mt-2 mb-2">Luxus-Herrenhaus Südlage</h3>
+                            <h4 class="text-xl font-serif text-gray-900 mt-2 mb-2">Luxus-Herrenhaus Südlage</h4>
                             <p class="text-gray-500 text-sm line-clamp-2">320.000 m² Grundstück, 12 Schlafzimmer, Tennisplatz, Teehaus.</p>
                         </div>
                         <div class="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center">
@@ -344,16 +345,16 @@
                     </div>
                 </div>
 
-                <!-- Card 3: From PDF (Finca) -->
-                <div class="min-w-[85vw] md:min-w-[350px] bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden snap-center flex flex-col">
+                <!-- Card 3: Finca -->
+                <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden flex flex-col">
                     <div class="relative h-64">
-                        <img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?auto=format&fit=crop&q=80" alt="Panorama Finca Tramuntana" class="w-full h-full object-cover">
                         <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-gray-900">6.6 Mio €</div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="mb-auto">
                             <span class="text-orange-500 text-xs font-bold tracking-wide uppercase">Finca / Tramuntana</span>
-                            <h3 class="text-xl font-serif text-gray-900 mt-2 mb-2">Panorama-Blick Finca</h3>
+                            <h4 class="text-xl font-serif text-gray-900 mt-2 mb-2">Panorama-Blick Finca</h4>
                             <p class="text-gray-500 text-sm line-clamp-2">400 m² Wohnfläche, Privacy, Poolbereich mit Sauna.</p>
                         </div>
                         <div class="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center">
@@ -362,7 +363,100 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
+            <!-- Reihe 2: Wohnungen & Apartments -->
+            <h3 class="text-xl font-serif text-gray-900 mb-6">Wohnungen & Apartments</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <!-- Card 4: Penthouse Dummy -->
+                <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden flex flex-col">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80" alt="Penthouse Palma" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-gray-900">4.2 Mio €</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="mb-auto">
+                            <span class="text-orange-500 text-xs font-bold tracking-wide uppercase">Penthouse / Palma</span>
+                            <h4 class="text-xl font-serif text-gray-900 mt-2 mb-2">Penthouse mit Meerblick</h4>
+                            <p class="text-gray-500 text-sm line-clamp-2">220 m² Wohnfläche, 4 Schlafzimmer, Dachterrasse mit Pool, Hafen-Panorama.</p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center">
+                            <div class="text-xs text-gray-400">ID: 82001</div>
+                            <button class="text-sm font-medium text-gray-900 hover:text-orange-600">Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Apartment Dummy -->
+                <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden flex flex-col">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80" alt="Luxus-Apartment Santa Ponsa" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-gray-900">1.8 Mio €</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="mb-auto">
+                            <span class="text-orange-500 text-xs font-bold tracking-wide uppercase">Apartment / Santa Ponsa</span>
+                            <h4 class="text-xl font-serif text-gray-900 mt-2 mb-2">Luxus-Apartment am Golfplatz</h4>
+                            <p class="text-gray-500 text-sm line-clamp-2">145 m² Wohnfläche, 3 Schlafzimmer, gehobene Ausstattung, Gemeinschaftspool.</p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center">
+                            <div class="text-xs text-gray-400">ID: 82015</div>
+                            <button class="text-sm font-medium text-gray-900 hover:text-orange-600">Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6: Wohnung Dummy -->
+                <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden flex flex-col">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80" alt="Designer-Wohnung Son Vida" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-gray-900">2.9 Mio €</div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="mb-auto">
+                            <span class="text-orange-500 text-xs font-bold tracking-wide uppercase">Wohnung / Son Vida</span>
+                            <h4 class="text-xl font-serif text-gray-900 mt-2 mb-2">Designer-Wohnung Son Vida</h4>
+                            <p class="text-gray-500 text-sm line-clamp-2">180 m² Wohnfläche, 3 Schlafzimmer, Concierge-Service, Blick auf die Bucht von Palma.</p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center">
+                            <div class="text-xs text-gray-400">ID: 82023</div>
+                            <button class="text-sm font-medium text-gray-900 hover:text-orange-600">Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION: Über uns -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <!-- Bild -->
+                <div class="relative">
+                    <img src="images/markus-redlich.jpg" alt="Markus Redlich – Gründer Finest Properties Mallorca" class="w-full rounded-3xl shadow-xl object-cover">
+                    <div class="absolute -bottom-4 -right-4 bg-orange-600 text-white px-6 py-3 rounded-2xl shadow-lg text-sm font-medium hidden md:block">
+                        Seit 2000 auf Mallorca
+                    </div>
+                </div>
+
+                <!-- Text -->
+                <div>
+                    <span class="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-600 text-xs font-bold tracking-widest uppercase mb-4">Über uns</span>
+                    <h2 class="text-3xl md:text-4xl font-serif text-gray-900 mb-6">Markus Redlich</h2>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        Als Gründer von Finest Properties Mallorca begleite ich seit über 25 Jahren anspruchsvolle Käufer und Investoren bei der Suche nach ihrem perfekten Objekt auf der Insel. Mein Team und ich verbinden tiefes Marktverständnis mit einem persönlichen Netzwerk, das Türen zu Off-Market-Opportunities öffnet.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed mb-8">
+                        Ob Trophy Asset, renditestarke Finca oder eine diskrete Transaktion im zweistelligen Millionenbereich – wir stehen für Vertrauen, Diskretion und Ergebnisse. Unser Anspruch: Jeder Kunde erhält eine maßgeschneiderte Beratung, die weit über den Immobilienkauf hinausgeht.
+                    </p>
+                    <a href="#" class="inline-flex items-center bg-gray-900 hover:bg-orange-600 text-white rounded-full px-8 py-3 text-sm font-medium transition-all duration-300 shadow-lg">
+                        Persönliches Gespräch vereinbaren
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
