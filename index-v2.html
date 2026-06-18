@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finest Properties Mallorca | Luxusimmobilien & Lifestyle</title>
+    <meta name="description" content="Finest Properties by Markus Redlich – Ihr Experte für Luxusimmobilien, Villen und Fincas auf Mallorca. Diskret, persönlich, mit lokalem Netzwerk. Traumhaus finden oder Immobilie verkaufen.">
+
+    <!-- Tailwind CSS (CDN für Prototyping – in Produktion purgen) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts: Playfair Display (Luxury Serif) & Inter (Clean Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            DEFAULT: '#EA580C',
+                            50: '#FFF7ED', 100: '#FFEDD5', 500: '#F97316', 600: '#EA580C', 700: '#C2410C',
+                        },
+                        sand: {
+                            50: '#FAF8F4', 100: '#F3EEE6', 200: '#E7DECF', 300: '#D6C7B0', 700: '#7A6A52', 900: '#3A332A',
+                        },
+                        ink: '#1A1714',
+                    },
+                    keyframes: {
+                        kenburns: {
+                            '0%':   { transform: 'scale(1) translate(0,0)' },
+                            '100%': { transform: 'scale(1.12) translate(-1.5%, -1.5%)' },
+                        },
+                        floaty: {
+                            '0%,100%': { transform: 'translateY(0)' },
+                            '50%':     { transform: 'translateY(8px)' },
+                        },
+                    },
+                    animation: {
+                        kenburns: 'kenburns 18s ease-out forwards',
+                        floaty: 'floaty 2.4s ease-in-out infinite',
+                    },
+                },
+            },
+        };
+    </script>
+
+    <!-- AI & SEO: Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "RealEstateAgent",
+      "name": "Finest Properties Mallorca",
+      "founder": "Markus Redlich",
+      "description": "Exklusive Luxusimmobilien, Villen und Fincas auf Mallorca. Persönliche Beratung, diskreter Verkauf, lokales Netzwerk.",
+      "address": { "@type": "PostalAddress", "addressLocality": "Palma de Mallorca", "addressRegion": "Illes Balears", "postalCode": "07001", "addressCountry": "ES" },
+      "priceRange": "€€€€",
+      "areaServed": ["Mallorca", "Palma", "Port d'Andratx", "Santa Ponsa", "Son Vida", "Serra de Tramuntana"],
+      "knowsAbout": ["Luxusvillen", "Fincas", "Penthäuser", "Immobilienverkauf", "Secret Sale", "Leben auf Mallorca"]
+    }
+    </script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1,h2,h3,h4 { font-family: 'Playfair Display', serif; }
+
+        .glass {
+            background: rgba(255,255,255,0.72);
+            backdrop-filter: blur(18px) saturate(140%);
+            -webkit-backdrop-filter: blur(18px) saturate(140%);
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+        .glass-dark {
+            background: rgba(26,23,20,0.55);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .hide-scrollbar::-webkit-scrollbar { display:none; }
+        .hide-scrollbar { -ms-overflow-style:none; scrollbar-width:none; }
+
+        /* Scroll-Reveal */
+        .reveal { opacity:0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+        .reveal.is-visible { opacity:1; transform:none; }
+
+        /* Map */
+        .map-region { fill:#E7DECF; stroke:#FAF8F4; stroke-width:2.5; transition:all .35s cubic-bezier(.16,1,.3,1); cursor:pointer; }
+        .map-region:hover, .map-region.active { fill:#EA580C; filter: drop-shadow(0 6px 10px rgba(234,88,12,.25)); }
+
+        /* Dropdown */
+        .has-dropdown:hover .dropdown { opacity:1; visibility:visible; transform: translateY(0); }
+        .dropdown { opacity:0; visibility:hidden; transform: translateY(8px); transition: all .25s ease; }
+
+        /* Decorative underline for section eyebrows */
+        .eyebrow::before { content:''; display:inline-block; width:28px; height:1px; background:#EA580C; margin-right:12px; vertical-align:middle; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity:1 !important; transform:none !important; transition:none; }
+            .animate-kenburns, .animate-floaty { animation: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-sand-50 text-ink antialiased selection:bg-brand selection:text-white">
+
+    <!-- ===== Cookie Banner (Borlabs-Platzhalter) ===== -->
+    <div id="cookie-banner" class="fixed bottom-4 left-4 right-4 md:left-8 md:right-auto md:w-96 bg-white shadow-2xl p-6 rounded-2xl z-[60] border border-sand-200 transition-transform duration-500">
+        <h3 class="text-sm font-semibold mb-2 font-sans">Datenschutz & Transparenz</h3>
+        <p class="text-xs text-sand-700 mb-4 leading-relaxed">Wir nutzen Cookies, um Ihr Erlebnis zu personalisieren und unsere Website zu verbessern.</p>
+        <div class="flex gap-2">
+            <button onclick="closeCookie()" class="flex-1 bg-ink text-white text-xs py-2.5 rounded-lg hover:bg-brand transition">Akzeptieren</button>
+            <button onclick="closeCookie()" class="flex-1 bg-sand-100 text-sand-700 text-xs py-2.5 rounded-lg hover:bg-sand-200 transition">Nur Essenzielle</button>
+        </div>
+    </div>
+
+    <!-- ===== 1. Sticky Navigation ===== -->
+    <nav id="navbar" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+        <div class="glass border-b border-white/40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20 transition-all duration-300" id="nav-inner">
+                    <!-- Logo (nachgebaut nach Website A) -->
+                    <a href="#top" class="flex flex-col leading-none group">
+                        <span class="text-xl md:text-2xl tracking-[0.18em] font-sans">
+                            <span class="font-bold text-ink">FINEST</span><span class="font-light text-sand-700">PROPERTIES</span>
+                        </span>
+                        <span class="text-[10px] tracking-[0.34em] uppercase text-brand mt-1 font-medium">by Markus Redlich</span>
+                    </a>
+
+                    <!-- Desktop Menu -->
+                    <div class="hidden lg:flex items-center gap-8">
+                        <a href="#top" class="text-sm font-medium text-ink/80 hover:text-brand transition">Startseite</a>
+
+                        <!-- Immobilien Dropdown -->
+                        <div class="relative has-dropdown">
+                            <button class="text-sm font-medium text-ink/80 hover:text-brand transition flex items-center gap-1">
+                                Immobilien
+                                <svg class="w-3 h-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div class="dropdown absolute left-0 top-full pt-4">
+                                <div class="bg-white rounded-2xl shadow-xl border border-sand-100 p-2 w-60">
+                                    <a href="#angebote" class="block px-4 py-2.5 rounded-xl text-sm text-ink/80 hover:bg-sand-50 hover:text-brand transition">Villa & Finca kaufen</a>
+                                    <a href="#angebote" class="block px-4 py-2.5 rounded-xl text-sm text-ink/80 hover:bg-sand-50 hover:text-brand transition">Wohnung kaufen</a>
+                                    <a href="#angebote" class="block px-4 py-2.5 rounded-xl text-sm text-ink/80 hover:bg-sand-50 hover:text-brand transition">Grundstück</a>
+                                    <a href="#angebote" class="block px-4 py-2.5 rounded-xl text-sm text-ink/80 hover:bg-sand-50 hover:text-brand transition">Immobilien Palma de Mallorca</a>
+                                    <a href="#angebote" class="block px-4 py-2.5 rounded-xl text-sm text-ink/80 hover:bg-sand-50 hover:text-brand transition">Mieten</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="#verkaufen" class="text-sm font-medium text-ink/80 hover:text-brand transition">Verkaufen</a>
+
+                        <!-- Service Dropdown -->
+                        <div class="relative has-dropdown">
+                            <button class="text-sm font-medium text-ink/80 hover:text-brand transition flex items-center gap-1">
+                                Service
+                                <svg class="w-3 h-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+                            <div class="dropdown absolute left-0 top-full pt-4">
+                                <div class="bg-white rounded-2xl shadow-xl border border-sand-100 p-2 w-60">
+                                    <a href="#ueber-uns" class="block px-4 py-2.5 rounded-xl text-sm text-ink/80 hover:bg-sand-50 hover:text-brand transition">Über uns</a>
+                                    <a href="#services" class="block px-4 py-2.5 rounded-xl text-sm text-ink/80 hover:bg-sand-50 hover:text-brand transition">VIP Mallorca Erlebnis</a>
+                                    <a href="#mallorca" class="block px-4 py-2.5 rounded-xl text-sm text-ink/80 hover:bg-sand-50 hover:text-brand transition">Leben auf Mallorca</a>
+                                    <a href="#guide" class="block px-4 py-2.5 rounded-xl text-sm text-ink/80 hover:bg-sand-50 hover:text-brand transition">Mallorca Guide</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="#kontakt" class="text-sm font-medium text-ink/80 hover:text-brand transition">Kontakt</a>
+
+                        <!-- Language + CTA -->
+                        <div class="flex items-center gap-3 pl-3 border-l border-sand-200">
+                            <div class="text-xs text-sand-700 tracking-wide">
+                                <button class="font-semibold text-ink">DE</button><span class="mx-1 text-sand-300">|</span><button class="hover:text-brand transition">EN</button><span class="mx-1 text-sand-300">|</span><button class="hover:text-brand transition">ES</button>
+                            </div>
+                            <a href="#finder" class="bg-ink text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-brand transition duration-300">Immobilie finden</a>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Button -->
+                    <button id="mobile-menu-btn" class="lg:hidden text-ink p-2" aria-label="Menü öffnen">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-sand-100 shadow-lg">
+            <div class="px-4 py-4 space-y-1">
+                <a href="#top" class="block px-3 py-2.5 rounded-lg text-base font-medium text-ink/80 hover:bg-sand-50 hover:text-brand">Startseite</a>
+                <a href="#angebote" class="block px-3 py-2.5 rounded-lg text-base font-medium text-ink/80 hover:bg-sand-50 hover:text-brand">Immobilien</a>
+                <a href="#verkaufen" class="block px-3 py-2.5 rounded-lg text-base font-medium text-ink/80 hover:bg-sand-50 hover:text-brand">Verkaufen</a>
+                <a href="#services" class="block px-3 py-2.5 rounded-lg text-base font-medium text-ink/80 hover:bg-sand-50 hover:text-brand">Service</a>
+                <a href="#guide" class="block px-3 py-2.5 rounded-lg text-base font-medium text-ink/80 hover:bg-sand-50 hover:text-brand">Mallorca Guide</a>
+                <a href="#kontakt" class="block px-3 py-2.5 rounded-lg text-base font-medium text-ink/80 hover:bg-sand-50 hover:text-brand">Kontakt</a>
+                <a href="#finder" class="block text-center mt-3 bg-ink text-white px-5 py-3 rounded-full text-sm font-medium hover:bg-brand transition">Immobilie finden</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== 2. Emotionaler Header mit Video (Three.js-ready) ===== -->
+    <header id="top" class="relative h-screen min-h-[640px] flex items-center justify-center overflow-hidden">
+        <!-- Layer 0: Standbild (Ken-Burns) – garantierter Fallback -->
+        <img src="images/mallorca-header-fpm-relaunch.jpg" alt="Mallorca Küste im Abendlicht" class="absolute inset-0 w-full h-full object-cover animate-kenburns">
+
+        <!-- Layer 1: Video-Loop (Platzhalter – durch eigenes Material ersetzen) -->
+        <video id="hero-video" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000"
+               autoplay muted loop playsinline poster="images/mallorca-header-fpm-relaunch.jpg"
+               onerror="this.remove()">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-shot-of-the-sea-and-rocky-coast-4044-large.mp4" type="video/mp4">
+        </video>
+
+        <!-- Layer 2: Three.js Mount-Point (für spätere Scroll-Animationen) -->
+        <canvas id="hero-canvas" class="absolute inset-0 w-full h-full pointer-events-none" data-threejs-ready="true"></canvas>
+
+        <!-- Verlauf -->
+        <div class="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/20 to-ink/70"></div>
+
+        <!-- Content -->
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto -mt-10" data-hero-content>
+            <span class="inline-block py-1.5 px-4 rounded-full glass-dark text-white/90 text-[11px] tracking-[0.25em] uppercase mb-6 border border-white/20">Finest Properties · seit über 15 Jahren auf Mallorca</span>
+            <h1 class="text-4xl sm:text-6xl md:text-7xl text-white font-serif leading-[1.05] mb-6 drop-shadow-xl">
+                Luxusimmobilien auf Mallorca<br><span class="italic text-brand-100">für höchste Ansprüche</span>
+            </h1>
+            <p class="text-lg md:text-xl text-white/85 mb-10 font-light max-w-2xl mx-auto drop-shadow">
+                Finden Sie Ihr Traumhaus – oder verkaufen Sie diskret mit unseren Experten.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#finder" class="bg-brand hover:bg-brand-700 text-white px-8 py-4 rounded-full text-sm font-medium shadow-lg transition duration-300">Immobilien finden</a>
+                <a href="#verkaufen" class="glass text-ink px-8 py-4 rounded-full text-sm font-medium hover:bg-white transition duration-300">Immobilie verkaufen</a>
+            </div>
+
+            <!-- Trust Badges -->
+            <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 mt-10 text-white/90 text-sm">
+                <span class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-100" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 011.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>Geprüfte Immobilien</span>
+                <span class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-100" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 011.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>Diskreter Verkauf</span>
+                <span class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-100" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 011.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>Lokale Expertise</span>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <a href="#finder" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/70 animate-floaty" aria-label="Weiter scrollen">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+        </a>
+    </header>
+
+    <!-- ===== 3. Immobiliensuche (Property Finder, wie Website A) ===== -->
+    <section id="finder" class="relative z-20 -mt-24 px-4">
+        <div class="max-w-6xl mx-auto reveal">
+            <div class="bg-white rounded-3xl shadow-2xl border border-sand-100 p-6 md:p-8">
+                <h2 class="sr-only">Immobiliensuche</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
+                    <!-- Typ -->
+                    <div>
+                        <label for="f-typ" class="block text-xs font-semibold text-sand-700 uppercase tracking-wider mb-2">Immobilientyp</label>
+                        <div class="relative">
+                            <select id="f-typ" class="w-full appearance-none bg-sand-50 border border-sand-200 rounded-xl px-4 py-3 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition cursor-pointer">
+                                <option>Alle Typen</option><option>Villa & Finca</option><option>Wohnung</option><option>Penthouse</option><option>Grundstück</option>
+                            </select>
+                            <svg class="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-sand-300 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </div>
+                    </div>
+                    <!-- Region -->
+                    <div>
+                        <label for="f-region" class="block text-xs font-semibold text-sand-700 uppercase tracking-wider mb-2">Region / Ort</label>
+                        <div class="relative">
+                            <select id="f-region" class="w-full appearance-none bg-sand-50 border border-sand-200 rounded-xl px-4 py-3 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition cursor-pointer">
+                                <option>Alle Orte</option><option>Palma de Mallorca</option><option>Port d'Andratx</option><option>Santa Ponsa</option><option>Son Vida</option><option>Serra de Tramuntana</option>
+                            </select>
+                            <svg class="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-sand-300 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </div>
+                    </div>
+                    <!-- Preis -->
+                    <div>
+                        <label for="f-preis" class="block text-xs font-semibold text-sand-700 uppercase tracking-wider mb-2">Preisklasse</label>
+                        <div class="relative">
+                            <select id="f-preis" class="w-full appearance-none bg-sand-50 border border-sand-200 rounded-xl px-4 py-3 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition cursor-pointer">
+                                <option>Beliebig</option><option>Bis 1.000.000 €</option><option>1.000.000 € – 3.000.000 €</option><option>Ab 3.000.000 €</option>
+                            </select>
+                            <svg class="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-sand-300 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </div>
+                    </div>
+                    <!-- Referenz -->
+                    <div>
+                        <label for="f-ref" class="block text-xs font-semibold text-sand-700 uppercase tracking-wider mb-2">Referenznummer</label>
+                        <input id="f-ref" type="text" placeholder="z. B. REF-1001" class="w-full bg-sand-50 border border-sand-200 rounded-xl px-4 py-3 text-sm text-ink placeholder:text-sand-300 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition">
+                    </div>
+                    <!-- Button -->
+                    <button onclick="document.getElementById('angebote').scrollIntoView({behavior:'smooth'})" class="w-full bg-ink hover:bg-brand text-white rounded-xl px-6 py-3.5 text-sm font-medium transition duration-300 flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        Suchen
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 4. Über Mallorca (für private Käufer, lebendig) ===== -->
+    <section id="mallorca" class="py-24 md:py-28 bg-sand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <span class="eyebrow text-xs font-semibold tracking-[0.2em] uppercase text-brand">Leben auf Mallorca</span>
+                    <h2 class="text-3xl md:text-5xl font-serif text-ink mt-4 mb-6 leading-tight">Eine Insel, die jeden Tag<br><span class="italic">wie Urlaub anfühlt.</span></h2>
+                    <p class="text-sand-700 leading-relaxed mb-6 text-lg">
+                        Türkisblaue Buchten, 300 Sonnentage, Sterneküche und charmante Bergdörfer – Mallorca verbindet mediterranes Lebensgefühl mit der Infrastruktur einer Weltstadt. Von Palma sind Sie in zwei Stunden in jeder europäischen Metropole.
+                    </p>
+                    <p class="text-sand-700 leading-relaxed mb-10">
+                        Ob Familienleben mit internationalen Schulen, ein Rückzugsort in der Tramuntana oder das Yacht-Leben im Südwesten: Wir kennen jede Region persönlich und finden den Ort, der zu Ihrem Leben passt.
+                    </p>
+
+                    <!-- Lifestyle-Stats -->
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-white rounded-2xl p-5 border border-sand-100 shadow-sm">
+                            <span class="block text-3xl font-bold text-brand counter" data-target="300" data-suffix="">0</span>
+                            <span class="text-xs text-sand-700 mt-1 block">Sonnentage / Jahr</span>
+                        </div>
+                        <div class="bg-white rounded-2xl p-5 border border-sand-100 shadow-sm">
+                            <span class="block text-3xl font-bold text-brand counter" data-target="262" data-suffix=" km">0</span>
+                            <span class="text-xs text-sand-700 mt-1 block">Küstenlinie</span>
+                        </div>
+                        <div class="bg-white rounded-2xl p-5 border border-sand-100 shadow-sm">
+                            <span class="block text-3xl font-bold text-brand counter" data-target="2" data-suffix=" h">0</span>
+                            <span class="text-xs text-sand-700 mt-1 block">nach Mitteleuropa</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interaktive Karte -->
+                <div class="reveal">
+                    <div class="relative w-full aspect-[4/3] bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-sand-100 select-none">
+                        <svg viewBox="0 0 800 600" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M150,300 L200,150 L400,100 L450,120 L300,350 Z" class="map-region" onmouseover="setRegion('Serra de Tramuntana','Bergdörfer, Olivenhaine & Ruhe – UNESCO-Welterbe.')" onclick="setRegion('Serra de Tramuntana','Bergdörfer, Olivenhaine & Ruhe – UNESCO-Welterbe.')"/>
+                            <path d="M400,100 L450,120 L550,80 L600,150 L500,200 L450,120 Z" class="map-region" onmouseover="setRegion('Norden – Pollença & Alcúdia','Lange Sandstrände, Familienflair & authentische Dörfer.')" onclick="setRegion('Norden – Pollença & Alcúdia','Lange Sandstrände, Familienflair & authentische Dörfer.')"/>
+                            <path d="M600,150 L680,250 L650,400 L550,350 L500,200 Z" class="map-region" onmouseover="setRegion('Osten – Artà & Manacor','Versteckte Calas, Natur pur & Genuss abseits des Trubels.')" onclick="setRegion('Osten – Artà & Manacor','Versteckte Calas, Natur pur & Genuss abseits des Trubels.')"/>
+                            <path d="M650,400 L550,350 L400,450 L450,550 L600,500 Z" class="map-region" onmouseover="setRegion('Süden – Santanyí & Es Trenc','Karibik-Strände, Boutiquen & lässige Eleganz.')" onclick="setRegion('Süden – Santanyí & Es Trenc','Karibik-Strände, Boutiquen & lässige Eleganz.')"/>
+                            <path d="M300,350 L450,120 L500,200 L550,350 L400,450 L300,350 Z" class="map-region" onmouseover="setRegion('Inselmitte','Authentische Fincas, Weingüter & Agroturismo.')" onclick="setRegion('Inselmitte','Authentische Fincas, Weingüter & Agroturismo.')"/>
+                            <path d="M250,400 L300,350 L400,450 L350,500 Z" class="map-region active" onmouseover="setRegion('Palma & Son Vida','Stadtleben, Kultur, Marina & Golf in Bestlage.')" onclick="setRegion('Palma & Son Vida','Stadtleben, Kultur, Marina & Golf in Bestlage.')"/>
+                            <path d="M100,450 L150,300 L300,350 L250,400 L180,500 Z" class="map-region" onmouseover="setRegion('Südwesten – Port d’Andratx','Yachthäfen, Sunset-Dinners & internationale Community.')" onclick="setRegion('Südwesten – Port d’Andratx','Yachthäfen, Sunset-Dinners & internationale Community.')"/>
+                        </svg>
+                        <div class="absolute bottom-6 left-6 right-6 bg-sand-50/95 backdrop-blur rounded-2xl px-5 py-4 border border-sand-100">
+                            <h4 class="font-serif text-lg text-ink" id="region-name">Palma & Son Vida</h4>
+                            <p class="text-sm text-sand-700 mt-1" id="region-desc">Stadtleben, Kultur, Marina & Golf in Bestlage.</p>
+                        </div>
+                        <span class="absolute top-6 right-6 text-[10px] text-sand-300 uppercase tracking-wider">Region antippen</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 5. Aktuelle Angebote (3 Dummies, später CMS) ===== -->
+    <section id="angebote" class="py-24 md:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between md:items-end gap-4 mb-14 reveal">
+                <div>
+                    <span class="eyebrow text-xs font-semibold tracking-[0.2em] uppercase text-brand">Handverlesen</span>
+                    <h2 class="text-3xl md:text-5xl font-serif text-ink mt-4">Neue Immobilienangebote</h2>
+                </div>
+                <a href="#" class="text-sm font-medium text-ink hover:text-brand transition flex items-center gap-2">Alle ansehen <span aria-hidden="true">→</span></a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <article class="reveal group bg-white rounded-3xl border border-sand-100 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden flex flex-col">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80" alt="Moderne Luxusvilla mit Meerblick in Port d'Andratx" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                        <span class="absolute top-4 left-4 bg-brand text-white text-xs font-semibold px-3 py-1 rounded-full tracking-wide">Villa</span>
+                        <span class="absolute top-4 right-4 glass text-ink text-sm font-bold px-3 py-1.5 rounded-full">4.500.000 €</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <p class="text-xs text-brand font-semibold uppercase tracking-wide mb-2">Port d'Andratx</p>
+                        <h3 class="text-xl font-serif text-ink mb-3">Moderne Luxusvilla mit Meerblick</h3>
+                        <div class="flex gap-4 text-sm text-sand-700 mb-6">
+                            <span>4 Schlafz.</span><span>·</span><span>4 Bäder</span><span>·</span><span>450 m²</span>
+                        </div>
+                        <div class="mt-auto pt-4 border-t border-sand-100 flex justify-between items-center">
+                            <span class="text-xs text-sand-300">REF-1001</span>
+                            <a href="#" class="text-sm font-medium text-ink group-hover:text-brand transition">Details ansehen →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="reveal group bg-white rounded-3xl border border-sand-100 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden flex flex-col" style="transition-delay:.08s">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80" alt="Elegantes Penthouse am Golfplatz in Santa Ponsa" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                        <span class="absolute top-4 left-4 bg-brand text-white text-xs font-semibold px-3 py-1 rounded-full tracking-wide">Penthouse</span>
+                        <span class="absolute top-4 right-4 glass text-ink text-sm font-bold px-3 py-1.5 rounded-full">2.100.000 €</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <p class="text-xs text-brand font-semibold uppercase tracking-wide mb-2">Santa Ponsa</p>
+                        <h3 class="text-xl font-serif text-ink mb-3">Elegantes Penthouse am Golfplatz</h3>
+                        <div class="flex gap-4 text-sm text-sand-700 mb-6">
+                            <span>3 Schlafz.</span><span>·</span><span>2 Bäder</span><span>·</span><span>180 m²</span>
+                        </div>
+                        <div class="mt-auto pt-4 border-t border-sand-100 flex justify-between items-center">
+                            <span class="text-xs text-sand-300">REF-1002</span>
+                            <a href="#" class="text-sm font-medium text-ink group-hover:text-brand transition">Details ansehen →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="reveal group bg-white rounded-3xl border border-sand-100 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden flex flex-col" style="transition-delay:.16s">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&q=80" alt="Renovierte historische Finca in Son Vida, Palma" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                        <span class="absolute top-4 left-4 bg-brand text-white text-xs font-semibold px-3 py-1 rounded-full tracking-wide">Finca</span>
+                        <span class="absolute top-4 right-4 glass text-ink text-sm font-bold px-3 py-1.5 rounded-full">1.850.000 €</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <p class="text-xs text-brand font-semibold uppercase tracking-wide mb-2">Palma de Mallorca · Son Vida</p>
+                        <h3 class="text-xl font-serif text-ink mb-3">Renovierte historische Finca</h3>
+                        <div class="flex gap-4 text-sm text-sand-700 mb-6">
+                            <span>5 Schlafz.</span><span>·</span><span>4 Bäder</span><span>·</span><span>320 m²</span>
+                        </div>
+                        <div class="mt-auto pt-4 border-t border-sand-100 flex justify-between items-center">
+                            <span class="text-xs text-sand-300">REF-1003</span>
+                            <a href="#" class="text-sm font-medium text-ink group-hover:text-brand transition">Details ansehen →</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 6. Services ===== -->
+    <section id="services" class="py-24 md:py-28 bg-sand-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <span class="eyebrow text-xs font-semibold tracking-[0.2em] uppercase text-brand">Unsere Services</span>
+                <h2 class="text-3xl md:text-5xl font-serif text-ink mt-4">Rundum begleitet – vom ersten Gespräch bis lange nach dem Notar</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Kauf -->
+                <a href="#angebote" class="reveal group bg-white rounded-3xl p-8 border border-sand-100 hover:border-brand/30 hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-50 text-brand flex items-center justify-center mb-6 group-hover:bg-brand group-hover:text-white transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                    </div>
+                    <h3 class="text-xl font-serif text-ink mb-3">Immobilienkauf</h3>
+                    <p class="text-sm text-sand-700 leading-relaxed">Wir finden das perfekte Zuhause oder die ideale Investition für Sie – auch off-market.</p>
+                </a>
+                <!-- Verkauf -->
+                <a href="#verkaufen" class="reveal group bg-white rounded-3xl p-8 border border-sand-100 hover:border-brand/30 hover:shadow-xl transition-all duration-300" style="transition-delay:.06s">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-50 text-brand flex items-center justify-center mb-6 group-hover:bg-brand group-hover:text-white transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                    </div>
+                    <h3 class="text-xl font-serif text-ink mb-3">Immobilienverkauf</h3>
+                    <p class="text-sm text-sand-700 leading-relaxed">Professionelle Vermarktung und diskrete Abwicklung auf höchstem Niveau.</p>
+                </a>
+                <!-- VIP -->
+                <a href="#kontakt" class="reveal group bg-white rounded-3xl p-8 border border-sand-100 hover:border-brand/30 hover:shadow-xl transition-all duration-300" style="transition-delay:.12s">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-50 text-brand flex items-center justify-center mb-6 group-hover:bg-brand group-hover:text-white transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.05 3.69l1.7 3.45 3.81.55-2.76 2.69.65 3.79L11.05 12.4 7.66 14.16l.65-3.79L5.55 7.68l3.81-.55 1.69-3.44z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-serif text-ink mb-3">VIP Mallorca Erlebnis</h3>
+                    <p class="text-sm text-sand-700 leading-relaxed">Exklusiver Service für Besichtigungen – von der Flugbuchung bis zum Aufenthalt.</p>
+                </a>
+                <!-- After-Sales -->
+                <a href="#kontakt" class="reveal group bg-white rounded-3xl p-8 border border-sand-100 hover:border-brand/30 hover:shadow-xl transition-all duration-300" style="transition-delay:.18s">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-50 text-brand flex items-center justify-center mb-6 group-hover:bg-brand group-hover:text-white transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-serif text-ink mb-3">After-Sales</h3>
+                    <p class="text-sm text-sand-700 leading-relaxed">Wir bleiben an Ihrer Seite: Renovierung, Verwaltung und vieles mehr.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 7. Über uns (Markus dezenter) ===== -->
+    <section id="ueber-uns" class="py-24 md:py-28 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+                <!-- Bild – dezenter: kleiner, runde Form, weiche Rahmung -->
+                <div class="md:col-span-4 reveal">
+                    <div class="relative max-w-[280px] mx-auto md:mx-0">
+                        <img src="images/markus-redlich.jpg" alt="Markus Redlich – Gründer von Finest Properties Mallorca" class="w-full aspect-[4/5] object-cover rounded-3xl shadow-md grayscale-[15%]">
+                        <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 md:left-6 md:translate-x-0 bg-white shadow-lg rounded-full px-5 py-2 text-xs font-medium text-ink border border-sand-100 whitespace-nowrap">
+                            Markus Redlich · Gründer
+                        </div>
+                    </div>
+                </div>
+                <!-- Text -->
+                <div class="md:col-span-8 reveal">
+                    <span class="eyebrow text-xs font-semibold tracking-[0.2em] uppercase text-brand">Über uns</span>
+                    <h2 class="text-3xl md:text-5xl font-serif text-ink mt-4 mb-6 leading-tight">Ihr Immobilienexperte auf Mallorca</h2>
+                    <p class="text-lg text-sand-700 leading-relaxed mb-6">
+                        Mit über 15 Jahren Erfahrung auf dem mallorquinischen Immobilienmarkt finden wir nicht nur ein Haus, sondern Ihr neues Zuhause. Diskretion, Expertise und ein exklusives Netzwerk sind unser Versprechen an Sie.
+                    </p>
+                    <div class="grid sm:grid-cols-3 gap-4 mb-8">
+                        <div class="flex items-start gap-2 text-sm text-ink"><svg class="w-5 h-5 text-brand shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 011.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>Marktkenntnis in Top-Lagen</div>
+                        <div class="flex items-start gap-2 text-sm text-ink"><svg class="w-5 h-5 text-brand shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 011.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>Begleitung bis zum Notar</div>
+                        <div class="flex items-start gap-2 text-sm text-ink"><svg class="w-5 h-5 text-brand shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 011.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z" clip-rule="evenodd"/></svg>Einzigartiger After-Sales</div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="tel:+34123456789" class="inline-flex items-center justify-center gap-2 bg-ink hover:bg-brand text-white rounded-full px-7 py-3.5 text-sm font-medium transition">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.5a1 1 0 01-.5 1.2l-2.26 1.13a11 11 0 005.5 5.5l1.13-2.26a1 1 0 011.2-.5l4.5 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.7 21 3 14.3 3 6V5z"/></svg>
+                            Jetzt anrufen
+                        </a>
+                        <a href="https://wa.me/34123456789" class="inline-flex items-center justify-center gap-2 border border-sand-200 hover:border-brand text-ink rounded-full px-7 py-3.5 text-sm font-medium transition">WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 8. Mallorca Guide (Ratgeber / Blog) ===== -->
+    <section id="guide" class="py-24 md:py-28 bg-sand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between md:items-end gap-4 mb-14 reveal">
+                <div>
+                    <span class="eyebrow text-xs font-semibold tracking-[0.2em] uppercase text-brand">Ratgeber</span>
+                    <h2 class="text-3xl md:text-5xl font-serif text-ink mt-4">Mallorca Guide</h2>
+                    <p class="text-sand-700 mt-3 max-w-xl">Insiderwissen rund um Regionen, Alltag und das Leben auf der Insel.</p>
+                </div>
+                <a href="#" class="text-sm font-medium text-ink hover:text-brand transition flex items-center gap-2">Zum Guide <span aria-hidden="true">→</span></a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <a href="#" class="reveal group relative h-96 rounded-3xl overflow-hidden shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1558642084-fd07fae5282e?auto=format&fit=crop&q=80" alt="Palma de Mallorca mit Kathedrale" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/20 to-transparent"></div>
+                    <div class="absolute bottom-0 p-7 text-white">
+                        <span class="text-[11px] uppercase tracking-widest text-brand-100">Region</span>
+                        <h3 class="text-2xl font-serif mt-2 mb-1">Palma & Umgebung</h3>
+                        <p class="text-sm text-white/80">Das urbane Herz der Insel.</p>
+                    </div>
+                </a>
+                <a href="#" class="reveal group relative h-96 rounded-3xl overflow-hidden shadow-sm" style="transition-delay:.08s">
+                    <img src="https://images.unsplash.com/photo-1602002418082-a4443e081dd1?auto=format&fit=crop&q=80" alt="Yachthafen im Südwesten Mallorcas" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/20 to-transparent"></div>
+                    <div class="absolute bottom-0 p-7 text-white">
+                        <span class="text-[11px] uppercase tracking-widest text-brand-100">Lifestyle</span>
+                        <h3 class="text-2xl font-serif mt-2 mb-1">Der exklusive Südwesten</h3>
+                        <p class="text-sm text-white/80">Prominenz, Yachthäfen & Luxus.</p>
+                    </div>
+                </a>
+                <a href="#" class="reveal group relative h-96 rounded-3xl overflow-hidden shadow-sm" style="transition-delay:.16s">
+                    <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&q=80" alt="Mediterranes Wohnen auf Mallorca" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/20 to-transparent"></div>
+                    <div class="absolute bottom-0 p-7 text-white">
+                        <span class="text-[11px] uppercase tracking-widest text-brand-100">Praxis</span>
+                        <h3 class="text-2xl font-serif mt-2 mb-1">Leben auf Mallorca</h3>
+                        <p class="text-sm text-white/80">Schulen, Steuern & Alltag.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 9. FAQ (private Käufer & Investoren, 5 starke Prompts) ===== -->
+    <section id="faq" class="py-24 md:py-28 bg-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14 reveal">
+                <span class="eyebrow text-xs font-semibold tracking-[0.2em] uppercase text-brand">Gut zu wissen</span>
+                <h2 class="text-3xl md:text-5xl font-serif text-ink mt-4">Häufige Fragen</h2>
+            </div>
+
+            <div class="space-y-4">
+                <details class="reveal group bg-sand-50 rounded-2xl p-6 border border-sand-100 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex cursor-pointer items-center justify-between gap-2 text-ink font-medium font-sans">
+                        <h3 class="text-lg font-sans font-medium">Wie läuft der Immobilienkauf auf Mallorca als Ausländer ab?</h3>
+                        <span class="shrink-0 rounded-full bg-white p-2 shadow-sm group-open:rotate-180 transition"><svg class="h-5 w-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                    </summary>
+                    <div class="mt-4 text-sand-700 leading-relaxed text-sm">EU- und Nicht-EU-Bürger können auf Mallorca unkompliziert Eigentum erwerben. Sie benötigen lediglich eine spanische Steuernummer (NIE). Der Ablauf: Reservierungsvertrag, notarieller Kaufvertrag (Escritura) und Eintrag ins Grundbuch. Wir begleiten Sie persönlich durch jeden Schritt – inklusive Anwalt, Notar und Bankkonto.</div>
+                </details>
+
+                <details class="reveal group bg-sand-50 rounded-2xl p-6 border border-sand-100 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex cursor-pointer items-center justify-between gap-2 text-ink font-medium font-sans">
+                        <h3 class="text-lg font-sans font-medium">Mit welchen Nebenkosten muss ich beim Kauf rechnen?</h3>
+                        <span class="shrink-0 rounded-full bg-white p-2 shadow-sm group-open:rotate-180 transition"><svg class="h-5 w-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                    </summary>
+                    <div class="mt-4 text-sand-700 leading-relaxed text-sm">Kalkulieren Sie rund 10–13 % des Kaufpreises an Nebenkosten. Dazu zählen die Grunderwerbsteuer (ITP, 8–11 % gestaffelt) bzw. bei Neubau 10 % IVA, Notar- und Grundbuchgebühren sowie Anwaltskosten. Wir erstellen Ihnen vorab eine transparente Gesamtkostenrechnung.</div>
+                </details>
+
+                <details class="reveal group bg-sand-50 rounded-2xl p-6 border border-sand-100 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex cursor-pointer items-center justify-between gap-2 text-ink font-medium font-sans">
+                        <h3 class="text-lg font-sans font-medium">Welche Region passt am besten zu meinem Lebensstil?</h3>
+                        <span class="shrink-0 rounded-full bg-white p-2 shadow-sm group-open:rotate-180 transition"><svg class="h-5 w-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                    </summary>
+                    <div class="mt-4 text-sand-700 leading-relaxed text-sm">Der Südwesten (Port d'Andratx, Santa Ponsa) steht für Yacht-Lifestyle und eine internationale Community. Palma und Son Vida bieten Stadtleben, Kultur und Golf. Die Tramuntana ist ideal für Ruhesuchende, der Norden für Familien mit Strandnähe. In einem persönlichen Gespräch finden wir die Region, die zu Ihrem Alltag passt.</div>
+                </details>
+
+                <details class="reveal group bg-sand-50 rounded-2xl p-6 border border-sand-100 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex cursor-pointer items-center justify-between gap-2 text-ink font-medium font-sans">
+                        <h3 class="text-lg font-sans font-medium">Kann ich meine Immobilie auf Mallorca rentabel vermieten?</h3>
+                        <span class="shrink-0 rounded-full bg-white p-2 shadow-sm group-open:rotate-180 transition"><svg class="h-5 w-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                    </summary>
+                    <div class="mt-4 text-sand-700 leading-relaxed text-sm">Ja – mit der richtigen Lizenz. Für die Ferienvermietung ist eine offizielle Lizenz (ETV) erforderlich, die an bestimmte Objekte und Zonen gebunden ist. Immobilien mit gültiger Lizenz erzielen attraktive Renditen und sind besonders wertstabil. Wir prüfen die Lizenzierbarkeit jedes Objekts und beraten zu langfristiger Wertentwicklung.</div>
+                </details>
+
+                <details class="reveal group bg-sand-50 rounded-2xl p-6 border border-sand-100 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex cursor-pointer items-center justify-between gap-2 text-ink font-medium font-sans">
+                        <h3 class="text-lg font-sans font-medium">Wie verkaufe ich meine Immobilie diskret und zum besten Preis?</h3>
+                        <span class="shrink-0 rounded-full bg-white p-2 shadow-sm group-open:rotate-180 transition"><svg class="h-5 w-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></span>
+                    </summary>
+                    <div class="mt-4 text-sand-700 leading-relaxed text-sm">Über unser internationales Netzwerk und das Secret-Sale-Verfahren vermarkten wir Ihre Immobilie diskret – ohne öffentliche Inserate, gezielt an geprüfte Kaufinteressenten. Wir starten mit einer marktgerechten, kostenlosen Bewertung und übernehmen die gesamte Abwicklung professionell und vertraulich.</div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 10. Immobilie verkaufen (wie Website A) ===== -->
+    <section id="verkaufen" class="py-24 md:py-28 bg-ink text-white relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&q=80" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover opacity-20">
+        <div class="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-ink/60"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl reveal">
+                <span class="eyebrow text-xs font-semibold tracking-[0.2em] uppercase text-brand-100">Secret Sale</span>
+                <h2 class="text-3xl md:text-5xl font-serif mt-4 mb-6 leading-tight">Immobilie verkaufen<br>auf Mallorca</h2>
+                <p class="text-white/80 text-lg leading-relaxed mb-8">
+                    Profitieren Sie von unserem internationalen Netzwerk und unserer Erfahrung im diskreten Secret Sale. Wir bewerten Ihre Immobilie marktgerecht und vermarkten sie gezielt – diskret und auf höchstem Niveau.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#kontakt" class="bg-brand hover:bg-brand-700 text-white px-8 py-4 rounded-full text-sm font-medium transition">Mehr erfahren</a>
+                    <a href="tel:+34123456789" class="glass-dark border border-white/20 text-white px-8 py-4 rounded-full text-sm font-medium hover:bg-white/10 transition inline-flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.5a1 1 0 01-.5 1.2l-2.26 1.13a11 11 0 005.5 5.5l1.13-2.26a1 1 0 011.2-.5l4.5 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.7 21 3 14.3 3 6V5z"/></svg>
+                        Jetzt anrufen
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 11. Lead-Gen ===== -->
+    <section id="kontakt" class="py-24 md:py-28 bg-sand-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+            <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-sand-100">
+                <div class="text-center mb-10">
+                    <span class="eyebrow text-xs font-semibold tracking-[0.2em] uppercase text-brand">Persönlich für Sie da</span>
+                    <h2 class="text-3xl md:text-4xl font-serif text-ink mt-4 mb-3">Lassen Sie uns sprechen</h2>
+                    <p class="text-sand-700 leading-relaxed">Sie suchen Ihr Traumhaus oder möchten verkaufen? Hinterlassen Sie uns eine Nachricht – wir melden uns persönlich, diskret und unverbindlich.</p>
+                </div>
+
+                <form class="space-y-5" onsubmit="event.preventDefault(); this.reset(); alert('Vielen Dank! Wir melden uns in Kürze bei Ihnen.');">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div>
+                            <label for="l-vorname" class="block text-sm font-medium text-ink mb-1.5">Vorname</label>
+                            <input id="l-vorname" type="text" placeholder="Max" required class="w-full px-4 py-3 rounded-xl border border-sand-200 bg-sand-50 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition">
+                        </div>
+                        <div>
+                            <label for="l-nachname" class="block text-sm font-medium text-ink mb-1.5">Nachname</label>
+                            <input id="l-nachname" type="text" placeholder="Mustermann" required class="w-full px-4 py-3 rounded-xl border border-sand-200 bg-sand-50 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="l-email" class="block text-sm font-medium text-ink mb-1.5">E-Mail-Adresse</label>
+                        <input id="l-email" type="email" placeholder="max@beispiel.de" required class="w-full px-4 py-3 rounded-xl border border-sand-200 bg-sand-50 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition">
+                    </div>
+                    <div>
+                        <label for="l-anliegen" class="block text-sm font-medium text-ink mb-1.5">Ihr Anliegen</label>
+                        <select id="l-anliegen" class="w-full px-4 py-3 rounded-xl border border-sand-200 bg-sand-50 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition appearance-none">
+                            <option value="">Bitte wählen…</option>
+                            <option>Immobilie kaufen</option>
+                            <option>Immobilie verkaufen</option>
+                            <option>Bewertung anfordern</option>
+                            <option>VIP Besichtigung</option>
+                            <option>Sonstiges</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="l-nachricht" class="block text-sm font-medium text-ink mb-1.5">Nachricht <span class="text-sand-300 font-normal">(optional)</span></label>
+                        <textarea id="l-nachricht" rows="3" placeholder="Erzählen Sie uns kurz, wonach Sie suchen…" class="w-full px-4 py-3 rounded-xl border border-sand-200 bg-sand-50 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition resize-none"></textarea>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <input id="l-dsgvo" type="checkbox" required class="mt-1 h-4 w-4 rounded border-sand-300 text-brand focus:ring-brand">
+                        <label for="l-dsgvo" class="text-xs text-sand-700 leading-relaxed">Ich stimme der Verarbeitung meiner Daten gemäß der <a href="#" class="text-brand underline hover:text-brand-700">Datenschutzerklärung</a> zu.</label>
+                    </div>
+                    <button type="submit" class="w-full bg-ink hover:bg-brand text-white rounded-full py-4 text-sm font-medium transition duration-300 shadow-lg">Nachricht senden</button>
+                </form>
+                <p class="text-center text-xs text-sand-300 mt-6">Kein Spam. Ihre Daten werden vertraulich behandelt.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 12. Footer ===== -->
+    <footer class="bg-ink text-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <div class="mb-5">
+                        <span class="text-2xl tracking-[0.18em]"><span class="font-bold">FINEST</span><span class="font-light text-white/70">PROPERTIES</span></span>
+                        <span class="block text-[10px] tracking-[0.34em] uppercase text-brand mt-1">by Markus Redlich</span>
+                    </div>
+                    <p class="text-white/60 text-sm leading-relaxed">Exklusive Immobilien auf Mallorca. Persönlich, diskret und mit lokalem Netzwerk – vom Erstgespräch bis weit über den Kauf hinaus.</p>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white/40 mb-5 font-sans">Immobilien</h4>
+                    <ul class="space-y-3 text-sm text-white/70">
+                        <li><a href="#angebote" class="hover:text-brand transition">Villa & Finca kaufen</a></li>
+                        <li><a href="#angebote" class="hover:text-brand transition">Wohnung kaufen</a></li>
+                        <li><a href="#angebote" class="hover:text-brand transition">Grundstück</a></li>
+                        <li><a href="#verkaufen" class="hover:text-brand transition">Immobilie verkaufen</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white/40 mb-5 font-sans">Service</h4>
+                    <ul class="space-y-3 text-sm text-white/70">
+                        <li><a href="#ueber-uns" class="hover:text-brand transition">Über uns</a></li>
+                        <li><a href="#services" class="hover:text-brand transition">VIP Mallorca Erlebnis</a></li>
+                        <li><a href="#guide" class="hover:text-brand transition">Mallorca Guide</a></li>
+                        <li><a href="#mallorca" class="hover:text-brand transition">Leben auf Mallorca</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-white/40 mb-5 font-sans">Kontakt</h4>
+                    <ul class="space-y-3 text-sm text-white/70">
+                        <li>Palma de Mallorca, ES</li>
+                        <li><a href="tel:+34123456789" class="hover:text-brand transition">+34 123 456 789</a></li>
+                        <li><a href="mailto:info@finestproperties.example" class="hover:text-brand transition">info@finestproperties.example</a></li>
+                    </ul>
+                    <div class="flex gap-4 mt-5">
+                        <a href="#" class="text-white/50 hover:text-white transition" aria-label="Instagram"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.5.4 1.1.4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.5.2-1.1.4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.5-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.5-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.1a4.9 4.9 0 110 9.8 4.9 4.9 0 010-9.8zm0 8.1a3.2 3.2 0 100-6.4 3.2 3.2 0 000 6.4zm6.2-8.3a1.1 1.1 0 11-2.3 0 1.1 1.1 0 012.3 0z"/></svg></a>
+                        <a href="#" class="text-white/50 hover:text-white transition" aria-label="LinkedIn"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21H9z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-white/40 gap-4">
+                <p>© 2026 Finest Properties Mallorca. Alle Rechte vorbehalten.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition">Impressum</a>
+                    <a href="#" class="hover:text-white transition">Datenschutz</a>
+                    <a href="#" class="hover:text-white transition">Cookie-Richtlinien</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== Floating Kontakt-Button ===== -->
+    <a href="https://wa.me/34123456789" class="fixed bottom-6 right-6 z-40 bg-brand hover:bg-brand-700 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition hover:scale-105" aria-label="WhatsApp Kontakt">
+        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.737-.98zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.017-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+    </a>
+
+    <!-- ===== Scripts ===== -->
+    <script>
+        // Cookie
+        function closeCookie(){ document.getElementById('cookie-banner').style.transform='translateY(180%)'; }
+
+        // Mobile Menu
+        const mBtn = document.getElementById('mobile-menu-btn');
+        const mMenu = document.getElementById('mobile-menu');
+        mBtn.addEventListener('click', () => mMenu.classList.toggle('hidden'));
+        mMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mMenu.classList.add('hidden')));
+
+        // Navbar scroll: shrink + stronger shadow
+        const nav = document.getElementById('navbar');
+        const navInner = document.getElementById('nav-inner');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 40) { nav.classList.add('shadow-lg'); navInner.classList.replace('h-20','h-16'); }
+            else { nav.classList.remove('shadow-lg'); navInner.classList.replace('h-16','h-20'); }
+        });
+
+        // Interaktive Karte
+        function setRegion(name, desc){
+            document.getElementById('region-name').textContent = name;
+            document.getElementById('region-desc').textContent = desc;
+            document.querySelectorAll('.map-region').forEach(r => r.classList.remove('active'));
+            if (event && event.target) event.target.classList.add('active');
+        }
+
+        // Scroll-Reveal (IntersectionObserver, gestaffelt)
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        // Counter-Animation
+        const counters = document.querySelectorAll('.counter');
+        const cObs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (!e.isIntersecting) return;
+                const el = e.target;
+                const target = +el.dataset.target;
+                const suffix = el.dataset.suffix || '';
+                let cur = 0;
+                const step = Math.max(1, Math.ceil(target / 60));
+                const tick = () => {
+                    cur += step;
+                    if (cur >= target){ el.textContent = target + suffix; }
+                    else { el.textContent = cur + suffix; requestAnimationFrame(tick); }
+                };
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){ el.textContent = target + suffix; }
+                else tick();
+                cObs.unobserve(el);
+            });
+        }, { threshold: 0.5 });
+        counters.forEach(c => cObs.observe(c));
+
+        // Hero-Video erst einblenden, wenn es spielt (sonst bleibt Standbild)
+        const hv = document.getElementById('hero-video');
+        if (hv){ hv.addEventListener('playing', () => hv.classList.replace('opacity-0','opacity-100')); }
+
+        /* ── Three.js Mount-Point ──────────────────────────────────────────
+           #hero-canvas + [data-hero-content] stehen für spätere Scroll-Szenen
+           bereit. Hier später three.min.js laden und Szene initialisieren. */
+    </script>
+</body>
+</html>
