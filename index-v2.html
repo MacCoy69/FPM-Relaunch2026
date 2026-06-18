@@ -12,7 +12,7 @@
     <!-- Fonts: Playfair Display (Luxury Serif) & Inter (Clean Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -81,6 +81,12 @@
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
         }
+        .nav-glass {
+            background: rgba(20,18,15,0.72);
+            backdrop-filter: blur(18px) saturate(140%);
+            -webkit-backdrop-filter: blur(18px) saturate(140%);
+        }
+        .script { font-family: 'Dancing Script', cursive; }
 
         .hide-scrollbar::-webkit-scrollbar { display:none; }
         .hide-scrollbar { -ms-overflow-style:none; scrollbar-width:none; }
@@ -120,24 +126,24 @@
 
     <!-- ===== 1. Sticky Navigation ===== -->
     <nav id="navbar" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
-        <div class="glass border-b border-white/40">
+        <div class="nav-glass border-b border-white/10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-20 transition-all duration-300" id="nav-inner">
                     <!-- Logo (nachgebaut nach Website A) -->
                     <a href="#top" class="flex flex-col leading-none group">
-                        <span class="text-xl md:text-2xl tracking-[0.18em] font-sans">
-                            <span class="font-bold text-ink">FINEST</span><span class="font-light text-sand-700">PROPERTIES</span>
+                        <span class="text-xl md:text-2xl tracking-[0.14em] font-sans font-semibold">
+                            <span class="text-white">Finest</span> <span class="text-brand">Properties</span>
                         </span>
-                        <span class="text-[10px] tracking-[0.34em] uppercase text-brand mt-1 font-medium">by Markus Redlich</span>
+                        <span class="script text-lg leading-none text-white/75 mt-0.5">by Markus Redlich</span>
                     </a>
 
                     <!-- Desktop Menu -->
                     <div class="hidden lg:flex items-center gap-8">
-                        <a href="#top" class="text-sm font-medium text-ink/80 hover:text-brand transition">Startseite</a>
+                        <a href="#top" class="text-sm font-medium text-white/85 hover:text-brand transition">Startseite</a>
 
                         <!-- Immobilien Dropdown -->
                         <div class="relative has-dropdown">
-                            <button class="text-sm font-medium text-ink/80 hover:text-brand transition flex items-center gap-1">
+                            <button class="text-sm font-medium text-white/85 hover:text-brand transition flex items-center gap-1">
                                 Immobilien
                                 <svg class="w-3 h-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                             </button>
@@ -152,11 +158,11 @@
                             </div>
                         </div>
 
-                        <a href="#verkaufen" class="text-sm font-medium text-ink/80 hover:text-brand transition">Verkaufen</a>
+                        <a href="#verkaufen" class="text-sm font-medium text-white/85 hover:text-brand transition">Verkaufen</a>
 
                         <!-- Service Dropdown -->
                         <div class="relative has-dropdown">
-                            <button class="text-sm font-medium text-ink/80 hover:text-brand transition flex items-center gap-1">
+                            <button class="text-sm font-medium text-white/85 hover:text-brand transition flex items-center gap-1">
                                 Service
                                 <svg class="w-3 h-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                             </button>
@@ -170,19 +176,19 @@
                             </div>
                         </div>
 
-                        <a href="#kontakt" class="text-sm font-medium text-ink/80 hover:text-brand transition">Kontakt</a>
+                        <a href="#kontakt" class="text-sm font-medium text-white/85 hover:text-brand transition">Kontakt</a>
 
                         <!-- Language + CTA -->
-                        <div class="flex items-center gap-3 pl-3 border-l border-sand-200">
-                            <div class="text-xs text-sand-700 tracking-wide">
-                                <button class="font-semibold text-ink">DE</button><span class="mx-1 text-sand-300">|</span><button class="hover:text-brand transition">EN</button><span class="mx-1 text-sand-300">|</span><button class="hover:text-brand transition">ES</button>
+                        <div class="flex items-center gap-3 pl-3 border-l border-white/20">
+                            <div class="text-xs text-white/55 tracking-wide">
+                                <button class="font-semibold text-white">DE</button><span class="mx-1 text-white/30">|</span><button class="hover:text-brand transition">EN</button><span class="mx-1 text-white/30">|</span><button class="hover:text-brand transition">ES</button>
                             </div>
-                            <a href="#finder" class="bg-ink text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-brand transition duration-300">Immobilie finden</a>
+                            <a href="#finder" class="bg-brand text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-brand-700 transition duration-300">Immobilie finden</a>
                         </div>
                     </div>
 
                     <!-- Mobile Button -->
-                    <button id="mobile-menu-btn" class="lg:hidden text-ink p-2" aria-label="Menü öffnen">
+                    <button id="mobile-menu-btn" class="lg:hidden text-white p-2" aria-label="Menü öffnen">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                     </button>
                 </div>
@@ -331,23 +337,22 @@
                     </div>
                 </div>
 
-                <!-- Interaktive Karte -->
+                <!-- Mallorca-Foto -->
                 <div class="reveal">
-                    <div class="relative w-full aspect-[4/3] bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-sand-100 select-none">
-                        <svg viewBox="0 0 800 600" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M150,300 L200,150 L400,100 L450,120 L300,350 Z" class="map-region" onmouseover="setRegion('Serra de Tramuntana','Bergdörfer, Olivenhaine & Ruhe – UNESCO-Welterbe.')" onclick="setRegion('Serra de Tramuntana','Bergdörfer, Olivenhaine & Ruhe – UNESCO-Welterbe.')"/>
-                            <path d="M400,100 L450,120 L550,80 L600,150 L500,200 L450,120 Z" class="map-region" onmouseover="setRegion('Norden – Pollença & Alcúdia','Lange Sandstrände, Familienflair & authentische Dörfer.')" onclick="setRegion('Norden – Pollença & Alcúdia','Lange Sandstrände, Familienflair & authentische Dörfer.')"/>
-                            <path d="M600,150 L680,250 L650,400 L550,350 L500,200 Z" class="map-region" onmouseover="setRegion('Osten – Artà & Manacor','Versteckte Calas, Natur pur & Genuss abseits des Trubels.')" onclick="setRegion('Osten – Artà & Manacor','Versteckte Calas, Natur pur & Genuss abseits des Trubels.')"/>
-                            <path d="M650,400 L550,350 L400,450 L450,550 L600,500 Z" class="map-region" onmouseover="setRegion('Süden – Santanyí & Es Trenc','Karibik-Strände, Boutiquen & lässige Eleganz.')" onclick="setRegion('Süden – Santanyí & Es Trenc','Karibik-Strände, Boutiquen & lässige Eleganz.')"/>
-                            <path d="M300,350 L450,120 L500,200 L550,350 L400,450 L300,350 Z" class="map-region" onmouseover="setRegion('Inselmitte','Authentische Fincas, Weingüter & Agroturismo.')" onclick="setRegion('Inselmitte','Authentische Fincas, Weingüter & Agroturismo.')"/>
-                            <path d="M250,400 L300,350 L400,450 L350,500 Z" class="map-region active" onmouseover="setRegion('Palma & Son Vida','Stadtleben, Kultur, Marina & Golf in Bestlage.')" onclick="setRegion('Palma & Son Vida','Stadtleben, Kultur, Marina & Golf in Bestlage.')"/>
-                            <path d="M100,450 L150,300 L300,350 L250,400 L180,500 Z" class="map-region" onmouseover="setRegion('Südwesten – Port d’Andratx','Yachthäfen, Sunset-Dinners & internationale Community.')" onclick="setRegion('Südwesten – Port d’Andratx','Yachthäfen, Sunset-Dinners & internationale Community.')"/>
-                        </svg>
-                        <div class="absolute bottom-6 left-6 right-6 bg-sand-50/95 backdrop-blur rounded-2xl px-5 py-4 border border-sand-100">
-                            <h4 class="font-serif text-lg text-ink" id="region-name">Palma & Son Vida</h4>
-                            <p class="text-sm text-sand-700 mt-1" id="region-desc">Stadtleben, Kultur, Marina & Golf in Bestlage.</p>
+                    <div class="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-xl group">
+                        <!-- Eigenes Foto: einfach als images/leben-mallorca.jpg ablegen.
+                             Fällt sonst auf das vorhandene Header-Bild zurück. -->
+                        <img src="images/leben-mallorca.jpg" onerror="this.onerror=null;this.src='images/mallorca-header-fpm-relaunch.jpg'"
+                             alt="Port de Sóller – Bucht und Hafen an der Westküste Mallorcas"
+                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-[1200ms]">
+                        <div class="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+                            <div class="text-white">
+                                <span class="text-[11px] uppercase tracking-widest text-brand-100">Westküste</span>
+                                <h4 class="font-serif text-2xl mt-1 drop-shadow">Port de Sóller</h4>
+                            </div>
+                            <span class="glass-dark border border-white/20 text-white text-xs px-3 py-1.5 rounded-full">Tramuntana</span>
                         </div>
-                        <span class="absolute top-6 right-6 text-[10px] text-sand-300 uppercase tracking-wider">Region antippen</span>
                     </div>
                 </div>
             </div>
@@ -686,8 +691,8 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
                 <div>
                     <div class="mb-5">
-                        <span class="text-2xl tracking-[0.18em]"><span class="font-bold">FINEST</span><span class="font-light text-white/70">PROPERTIES</span></span>
-                        <span class="block text-[10px] tracking-[0.34em] uppercase text-brand mt-1">by Markus Redlich</span>
+                        <span class="text-2xl font-semibold tracking-[0.14em]"><span class="text-white">Finest</span> <span class="text-brand">Properties</span></span>
+                        <span class="script block text-xl text-white/65 mt-0.5">by Markus Redlich</span>
                     </div>
                     <p class="text-white/60 text-sm leading-relaxed">Exklusive Immobilien auf Mallorca. Persönlich, diskret und mit lokalem Netzwerk – vom Erstgespräch bis weit über den Kauf hinaus.</p>
                 </div>
